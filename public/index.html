@@ -21,11 +21,6 @@
         margin-bottom: 12px
     }
     /* Set the width of the sidebar to 120px */
-    
-    .w3-sidebar {
-        width: 120px;
-        background: #222;
-    }
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
     
     #main {
@@ -40,7 +35,7 @@
     }
 </style>
 
-<body class="w3-black">
+<body data-theme='dark' class="w3-black">
 
     <!-- Page Content -->
     <div class="w3-padding-large" id="main">
@@ -49,12 +44,20 @@
             <h1 class="w3-jumbo"><span class="w3-hide-small">reFresh </span> Studios.</h1>
             <p>Designs for the 21st century.</p>
 
+            <!-- Toggle button
+            <div class="toggle-container">
+                <input type="checkbox" id="switch" name="theme" />
+                <label for="switch">Toggle</label>
+            </div>
+            -->
+
+
             <!-- About Section -->
             <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
                 <h2 class="w3-text-light-grey">Why</h2>
                 <p> We believe design should be <em class="red">simple and intuitive.</em> Today, countless startups have a great product that doesn't reach the intended audience because of <em class="blue">a lack of user friendly design.</em> Our goal is
                     to <em class="green">refresh
-                  the UX & UI</em> of these startups to increase their use.
+                    the UX & UI</em> of these startups to increase their use.
                 </p>
                 <br>
                 <br>
@@ -92,8 +95,29 @@
                 <!-- END PAGE CONTENT -->
             </div>
 
+            <script>
+                var checkbox = document.querySelector('input[name=theme]');
 
-            <div id="root"></div>
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        trans()
+                        document.documentElement.setAttribute('data-theme', 'dark')
+                    } else {
+                        trans()
+                        document.documentElement.setAttribute('data-theme', 'light')
+                    }
+                })
+
+                let trans = () => {
+                    document.documentElement.classList.add('transition')
+                    window.setTimeout(() => {
+                        document.documentElement.classList.remove('transition')
+                    }, 1000)
+                }
+            </script>
+
+
+            <!--<div id="root"></div>-->
             <!--<script src="./src/App.js"></script>-->
 </body>
 

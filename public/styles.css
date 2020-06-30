@@ -1,7 +1,29 @@
 /* W3.CSS 4.13 June 2019 by Jan Egil and Borge Refsnes */
 
 html {
-    box-sizing: border-box
+    box-sizing: border-box;
+    --bg: #FCFCFC;
+    --bg-panel: #EBEBEB;
+    --color-headings: #0077FF;
+    --color-text: #333333;
+}
+
+html[data-theme='dark'] {
+    box-sizing: border-box;
+    --bg: #000;
+    --bg-panel: #000;
+    --color-headings: rgb(255, 255, 255);
+    --color-text: #d6d6d6;
+}
+
+.w3-black[data-theme='light'] {
+    color: #000;
+    background-color: #fff
+}
+
+.w3-black[data-theme='dark'] {
+    color: #fff;
+    background-color: #000
 }
 
 *,
@@ -19,7 +41,77 @@ html {
 }
 
 body {
-    margin: 0
+    margin: 0;
+    background-color: (var(--bg))
+}
+
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background: grey;
+    float: right;
+    border-radius: 100px;
+    position: relative;
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked+label {
+    background: var(--color-headings);
+}
+
+input:checked+label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 45px;
+}
+
+em.red {
+    color: #FEB2D0;
+    font-style: normal;
+}
+
+em.green {
+    color: #A7FFB5;
+    font-style: normal;
+}
+
+em.blue {
+    color: #7BC8F6;
+    font-style: normal;
+}
+
+h6.blue {
+    color: #7BC8F6;
+}
+
+h6.green {
+    color: #A7FFB5;
+}
+
+h6.red {
+    color: #FEB2D0;
 }
 
 article,
@@ -63,33 +155,6 @@ template {
 
 a {
     background-color: transparent
-}
-
-em.red {
-    color: #FEB2D0;
-    font-style: normal;
-}
-
-em.green {
-    color: #A7FFB5;
-    font-style: normal;
-}
-
-em.blue {
-    color: #7BC8F6;
-    font-style: normal;
-}
-
-h6.blue {
-    color: #7BC8F6;
-}
-
-h6.green {
-    color: #A7FFB5;
-}
-
-h6.red {
-    color: #FEB2D0;
 }
 
 a:active,
@@ -421,7 +486,7 @@ a {
 }
 
 .w3-disabled *,
-:disabled * {
+ :disabled * {
     pointer-events: none
 }
 
@@ -1611,12 +1676,6 @@ a {
 .w3-hover-white:hover {
     color: #000!important;
     background-color: #fff!important
-}
-
-.w3-black,
-.w3-hover-black:hover {
-    color: #fff!important;
-    background-color: #000!important
 }
 
 .w3-grey,
